@@ -1,0 +1,20 @@
+{% extends 'encyclopedia/layout.html' %}
+{% block nav %}{% endblock %}
+{% block title %}
+    Search
+{% endblock %}
+
+{% block body %}
+    <h1>Search Results</h1>
+
+    <ul>
+        {% for match in matches %}
+            <li><a href= '{% url "entry page" match %}'>{{ match }}</a></li>
+
+        {% empty %}  
+            <h3>Search returned no results. :(</h3> 
+        {% endfor %}
+    </ul>
+
+{% endblock %}
+

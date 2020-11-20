@@ -1,0 +1,21 @@
+{% extends 'encyclopedia/layout.html' %}
+{% block title %}{% endblock%}
+{% block body  %}
+{% if exists %}
+<div class="alert alert-danger" role="alert">
+    Page already Exists
+</div>
+{% endif %}
+<form method= 'POST' action="{% url 'newPage' %}">
+    {% csrf_token %}
+    <div class="form-group" >
+        <h1>New Encyclopedia Entry</h1>
+        <label for="postName">Post Name</label>
+        <input type="text" class="form-control" id="postName"  placeholder="Post Name" name='name'>
+        <br>
+        <label for="postContent">Post Content</label>
+        <textarea class="form-control" id="postContent" name='info' rows="3"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock%}
